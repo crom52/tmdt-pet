@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.springboot.mapper.ProductMapper">
+    <!-- 
+ 
+    <update id="updatePerson" parameterType="String">
+        UPDATE PERSON SET PASSWORD = #{password} WHERE USERNAME = #{userName};
+    </update>
+     
+  
+      -->
+    <insert id="insertProduct" parameterType="com.springboot.Entity.Product" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
+        INSERT INTO PRODUCT (USERNAME, PASSWORD) VALUES (#{userName}, #{password});
+    </insert>
+    <select id="selectAllProduct" resultMap="result">
+        SELECT * FROM PRODUCT;
+    </select>
+
+    <delete id="deleteProductById" parameterType="long">
+        DELETE FROM PRODUCT WHERE ID = #{id};
+    </delete>
+     
+  <!--   <select id="selectStudentById" parameterType="int" resultType="Student">
+        SELECT * FROM STUDENT WHERE ID = #{id};
+    </select> -->
+     
+    <resultMap id = "result" type = "com.springboot.Entity.Product">
+       <result property = "id" column = "id"/>
+       <result property = "name" column = "name"/>
+       <result property = "amount" column = "amount"/>
+       <result property = "price" column = "price"/>
+       <result property = "promotion" column = "promotion"/>
+       <result property = "url" column = "url"/>
+       <result property = "category" column = "category"/>
+    </resultMap>
+</mapper>
